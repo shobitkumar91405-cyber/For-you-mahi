@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my forever bestie, pallavi ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Forever Bestie, Pallavi ❤️</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -16,196 +16,154 @@
             overflow: hidden;
             background: linear-gradient(135deg, #fffdf8, #fff1f6, #f2e9ff);
             font-family: 'Playfair Display', serif;
-            touch-action: none;
+            touch-action: manipulation;
             color: #333;
+            height: 100%;
         }
         
         .premium-font { font-family: 'Dancing Script', cursive; font-weight: 700; }
-        .title-font { font-family: 'Cinzel Decorative', cursive; letter-spacing: 2px; }
         
         .section {
             position: absolute; inset: 0;
             display: none; opacity: 0;
             align-items: center; justify-content: center; flex-direction: column;
             padding: 20px; width: 100vw; height: 100vh;
+            will-change: opacity, transform;
         }
 
         .section.active { display: flex; opacity: 1; }
 
         .glass-premium {
             background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(6px) saturate(180%);
-            -webkit-backdrop-filter: blur(6px) saturate(180%);
-            border: 1px solid rgba(236, 72, 153, 0.15);
-            box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08);
-            border-radius: 28px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(168, 10, 86, 0.1);
+            box-shadow: 0 8px 32px rgba(168, 10, 86, 0.08);
+            border-radius: 24px;
         }
         
         .ultra-glow {
-            color: #c2185b;
-            text-shadow: 0 0 8px rgba(236, 72, 153, 0.4), 0 0 16px rgba(168, 10, 86, 0.2);
+            color: #9d174d;
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
         }
 
-        .bg-particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+        .bg-particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
         .particle {
-            position: absolute; top: -20%; 
-            color: #e91e63; font-size: 28px;
+            position: absolute; top: -10%; 
             animation: fallPremium linear infinite;
-            text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+            will-change: transform;
         }
+
         @keyframes fallPremium {
-            0% { transform: translate3d(0, -20vh, 0) rotate(0deg) scale(0.6); opacity: 0.3; }
-            25% { opacity: 0.95; }
-            100% { transform: translate3d(0, 120vh, 0) rotate(900deg) scale(1.2); opacity: 0; }
-        }
-
-        .name-balloon {
-            position: fixed;
-            bottom: -180px;
-            width: 110px;
-            height: 130px;
-            background: radial-gradient(circle at 35% 25%, #ffffff90, #ffffff00 70%), var(--nb-color);
-            border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            animation: floatUpName linear infinite;
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Dancing Script', cursive;
-            font-weight: 700;
-            color: #fff;
-            font-size: 1.6rem;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-            opacity: 0.92;
-            pointer-events: none;
-        }
-        .name-balloon::after {
-            content: ''; position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
-            width: 2.5px; height: 45px; background: rgba(0,0,0,0.25);
-        }
-        @keyframes floatUpName {
-            0% { transform: translate3d(0, 0, 0) rotate(-6deg); opacity: 0; }
-            10% { opacity: 0.92; }
-            90% { opacity: 0.92; }
-            100% { transform: translate3d(0, -130vh, 0) rotate(6deg); opacity: 0; }
-        }
-
-        .wish-card {
-            transition: all 0.5s ease;
-            transform: perspective(1100px) rotateX(3deg) rotateY(2deg);
-        }
-        .wish-card:hover {
-            transform: perspective(1100px) rotateX(0deg) rotateY(0deg) scale(1.1) translateY(-10px);
-            box-shadow: 0 25px 50px rgba(236, 72, 153, 0.18);
+            0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate3d(0, 110vh, 0) rotate(360deg); opacity: 0; }
         }
 
         .balloon {
-            width: 90px; height: 115px;
-            background: radial-gradient(circle at 35% 25%, #ffffff70, #ffffff00 70%), var(--balloon-color);
+            width: 70px; height: 90px;
+            background: radial-gradient(circle at 35% 25%, #ffffff60, #ffffff00 70%), var(--balloon-color);
             border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
             position: absolute;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            animation: floatPremium 8s ease-in-out infinite alternate;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: floatPremium 4s ease-in-out infinite alternate;
             cursor: pointer;
+            will-change: transform;
         }
-        .balloon::after {
-            content: ''; position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
-            width: 2.5px; height: 40px; background: rgba(0,0,0,0.12);
-        }
+
         @keyframes floatPremium {
-            0% { transform: translate3d(0, 0, 0) rotate(-5deg); }
-            100% { transform: translate3d(0, -35px, 0) rotate(5deg); }
+            0% { transform: translate3d(0, 0, 0) rotate(-3deg); }
+            100% { transform: translate3d(0, -20px, 0) rotate(3deg); }
         }
-        
-        .pop-text-anim {
-            animation: premiumPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        @keyframes premiumPop {
-            0% { opacity: 0; transform: translate3d(0, 50px, 0) scale(0.5) rotate(-6deg); filter: blur(4px); }
-            60% { opacity: 1; transform: translate3d(0, -12px, 0) scale(1.2) rotate(3deg); filter: blur(0); }
-            100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+
+        /* Catch My Heart Game Styles */
+        #game-canvas {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            border: 2px dashed #f472b6;
+            cursor: crosshair;
+            touch-action: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="fixed top-4 left-0 w-full text-center z-[100] text-gray-600/70 text-xs font-mono tracking-widest pointer-events-none">
-        made with all my heart by sivasingh ❤️ pallavi • @smss1708
+    <div class="fixed top-4 left-0 w-full text-center z-[100] text-gray-400 text-[10px] tracking-widest pointer-events-none uppercase">
+        For Pallavi • From Sivasingh ❤️
     </div>
 
     <audio id="bgmusic" loop><source src="tere-liye.mp3" type="audio/mpeg"></audio>
 
     <div class="bg-particles" id="particles-container"></div>
-    <div id="name-balloons-container"></div>
 
-    <section id="intro" class="section active" style="z-index: 10;">
+    <section id="intro" class="section active">
         <div class="text-center z-20">
-            <h1 class="text-7xl md:text-9xl premium-font ultra-glow mb-6">hey pallavi ❤️</h1>
-            <p class="text-4xl premium-font text-rose-800 mb-14">your best friend has something very special for you...</p>
-            <button onclick="startExperience()" class="bg-gradient-to-br from-rose-500 via-pink-400 to-rose-600 px-14 py-6 rounded-full text-3xl font-bold hover:scale-110 hover:shadow-2xl transition-all duration-500 shadow-xl shadow-pink-700/30 text-white border border-pink-200/40">
-                open my heart 💞
+            <h1 class="text-6xl md:text-8xl premium-font ultra-glow mb-4">Hey Pallavi ❤️</h1>
+            <p class="text-2xl premium-font text-rose-800 mb-10">Your best friend made something special for you...</p>
+            <button onclick="startExperience()" class="bg-gradient-to-br from-rose-500 to-pink-500 px-10 py-4 rounded-full text-xl font-bold text-white shadow-xl hover:scale-105 transition-transform">
+                Unlock My Heart 💞
             </button>
         </div>
     </section>
 
-    <section id="wishes" class="section" style="z-index: 10;">
-        <h2 class="text-6xl premium-font ultra-glow mb-12 text-center">letters from my heart 💌</h2>
-        <div class="grid grid-cols-2 gap-10 z-20 w-full max-w-2xl px-6">
-            <div class="wish-card glass-premium p-12 rounded-3xl text-center flex items-center justify-center flex-col cursor-pointer" onclick="openWish('Every time you smile, my whole world feels a little brighter… you’re my favorite reason to be happy 🌸')">
-                <i class="fa-solid fa-heart text-6xl text-rose-600 mb-5 ultra-glow"></i>
-                <p class="text-gray-900 font-bold text-2xl">from my heart 1</p>
+    <section id="wishes" class="section">
+        <h2 class="text-5xl premium-font ultra-glow mb-8 text-center">Messages from my heart 💌</h2>
+        <div class="grid grid-cols-2 gap-4 z-20 w-full max-w-md px-4">
+            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('You smile a little more because of me... and I live a little more because of you 🌸')">
+                <i class="fa-solid fa-heart text-3xl text-rose-600 mb-2"></i>
+                <p class="font-bold text-sm">Heart 1</p>
             </div>
-            <div class="wish-card glass-premium p-12 rounded-3xl text-center flex items-center justify-center flex-col cursor-pointer" onclick="openWish('You’re my best friend, but sometimes it feels like you’re my safest place, my favorite thought, and my softest feeling… don’t ever change ✨')">
-                <i class="fa-solid fa-star text-6xl text-amber-500 mb-5 ultra-glow"></i>
-                <p class="text-gray-900 font-bold text-2xl">from my heart 2</p>
+            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('You are my best friend, but sometimes I feel you are my favorite feeling... stay like this forever ✨')">
+                <i class="fa-solid fa-star text-3xl text-amber-500 mb-2"></i>
+                <p class="font-bold text-sm">Heart 2</p>
             </div>
-            <div class="wish-card glass-premium p-12 rounded-3xl text-center flex items-center justify-center flex-col cursor-pointer" onclick="openWish('No matter how crazy life gets, I promise to hold your hand through every storm and every sunrise… you’re stuck with me forever 💗')">
-                <i class="fa-solid fa-hand-holding-heart text-6xl text-pink-500 mb-5 ultra-glow"></i>
-                <p class="text-gray-900 font-bold text-2xl">from my heart 3</p>
+            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('The world may change, people may change... but my promise of friendship will never change 💗')">
+                <i class="fa-solid fa-hand-holding-heart text-3xl text-pink-500 mb-2"></i>
+                <p class="font-bold text-sm">Heart 3</p>
             </div>
-            <div class="wish-card glass-premium p-12 rounded-3xl text-center flex items-center justify-center flex-col cursor-pointer" onclick="openWish('Being around you feels like the best kind of magic — a little crazy, a little sweet, and a whole lot of love… thank you for being my everything, Pallavi ❤️‍🔥')">
-                <i class="fa-solid fa-infinity text-6xl text-rose-600 mb-5 ultra-glow"></i>
-                <p class="text-gray-900 font-bold text-2xl">from my heart 4</p>
+            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('With you, every moment feels a little romantic, a little crazy, and full of love. Thank you for being mine ❤️‍🔥')">
+                <i class="fa-solid fa-infinity text-3xl text-rose-500 mb-2"></i>
+                <p class="font-bold text-sm">Heart 4</p>
             </div>
         </div>
-        <button id="btn-after-wishes" onclick="nextPage('balloons')" class="mt-16 bg-gradient-to-r from-rose-500 to-pink-500 px-12 py-5 rounded-full glass-premium text-white text-2xl font-bold hidden hover:scale-105 transition-all shadow-xl shadow-rose-600/40">
-            ready for more magic? ✨
+        <button id="btn-after-wishes" onclick="nextPage('balloons')" class="mt-8 bg-pink-500 px-8 py-3 rounded-full text-white font-bold hidden shadow-lg">
+            See some magic? ✨
         </button>
 
-        <div id="wish-modal" class="fixed inset-0 bg-white/92 hidden items-center justify-center z-50 px-6">
-            <div class="glass-premium p-14 rounded-3xl text-center max-w-xl w-full relative border border-pink-300/40 shadow-2xl">
-                <p id="wish-text" class="text-4xl md:text-5xl premium-font leading-relaxed text-rose-900"></p>
-                <button onclick="closeWish()" class="mt-12 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-12 py-4 rounded-full font-bold text-xl hover:scale-105 transition">close ✕</button>
+        <div id="wish-modal" class="fixed inset-0 bg-white/95 hidden items-center justify-center z-50 px-6">
+            <div class="glass-premium p-8 text-center max-w-sm w-full">
+                <p id="wish-text" class="text-2xl premium-font text-rose-900"></p>
+                <button onclick="closeWish()" class="mt-6 text-rose-500 font-bold">Close ✕</button>
             </div>
         </div>
     </section>
 
-    <section id="balloons" class="section" style="z-index: 10;">
-        <div class="text-center z-20 mb-12 pointer-events-none">
-            <h1 class="text-6xl md:text-9xl premium-font ultra-glow mb-4">pop the balloons, pallavi! 🎈</h1>
-            <p class="text-rose-900 text-2xl font-bold">tap them… each one has a piece of my heart</p>
+    <section id="balloons" class="section">
+        <div class="text-center z-20 mb-6">
+            <h1 class="text-5xl premium-font ultra-glow">Pop the Balloons! 🎈</h1>
+            <p class="text-rose-900 text-sm">Tap to see what's inside</p>
         </div>
-        
-        <div id="balloon-container" class="relative w-full h-[70vh] max-w-2xl z-20"></div>
-
-        <button id="btn-after-balloons" onclick="goToFinal()" class="absolute bottom-16 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 px-14 py-6 rounded-full text-3xl font-bold text-white shadow-2xl hidden z-30 hover:scale-105 transition-all duration-500">
-            show me the final surprise 💗
+        <div id="balloon-container" class="relative w-full h-[50vh] max-w-md"></div>
+        <button id="btn-after-balloons" onclick="nextPage('final-page')" class="mt-4 bg-rose-500 px-10 py-4 rounded-full text-white font-bold hidden shadow-xl">
+            The Final Surprise 💗
         </button>
     </section>
 
-    <section id="final-page" class="section bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50" style="z-index: 50; padding: 0;">
-        <div class="text-center z-20 px-8 max-w-3xl">
-            <h1 class="text-7xl md:text-9xl premium-font ultra-glow mb-10">pallavi… ❤️</h1>
-            <p class="text-4xl md:text-5xl premium-font text-rose-800 leading-relaxed mb-12">
-                You're not just my best friend.<br>
-                You're my favorite notification,<br>
-                my safest feeling,<br>
-                my reason to smile even on the worst days,<br>
-                and probably a little more than I can ever explain.<br><br>
-                Forever yours (in every way that matters),<br>
-                <span class="text-6xl ultra-glow block mt-6">sivasingh ❤️</span>
+    <section id="final-page" class="section">
+        <div id="final-content" class="text-center px-6">
+            <h1 class="text-6xl premium-font ultra-glow mb-4">Pallavi...</h1>
+            <p class="text-2xl premium-font text-rose-800 mb-8">
+                You are my best friend, my favorite reason to smile,<br>
+                and maybe... a little more than that. 💞<br><br>
+                Forever yours, <b>Sivasingh</b>
             </p>
+            
+            <div class="mt-6 p-4 glass-premium">
+                <h3 class="premium-font text-2xl text-pink-600 mb-2">Game: Catch My Heart 💖</h3>
+                <p class="text-xs mb-4 text-gray-600">Move your finger/mouse to catch the falling hearts!</p>
+                <canvas id="game-canvas"></canvas>
+                <p class="mt-2 font-bold text-rose-600">Score: <span id="score">0</span></p>
+            </div>
         </div>
     </section>
 
@@ -213,136 +171,127 @@
         let music = document.getElementById('bgmusic');
         let wishesRead = 0;
         let balloonsPopped = 0;
-        const totalBalloons = 10;
-        let isTransitioning = false;
+        let score = 0;
 
-        function generateNameBalloons() {
-            const container = document.getElementById('name-balloons-container');
-            const texts = ['Pallavi', 'Sivasingh', 'P ❤️ S', 'best friend forever', 'my heart', 'you & me', 'always us'];
-            const colors = ['#e91e63', '#c2185b', '#d81b60', '#f06292', '#ec407a', '#ad1457'];
-
-            setInterval(() => {
-                const b = document.createElement('div');
-                b.className = 'name-balloon';
-                b.style.left = Math.random() * 90 + 'vw';
-                b.innerText = texts[Math.floor(Math.random() * texts.length)];
-                b.style.setProperty('--nb-color', colors[Math.floor(Math.random() * colors.length)]);
-                b.style.animationDuration = (Math.random() * 6 + 10) + 's';
-                
-                container.appendChild(b);
-                setTimeout(() => b.remove(), 16000);
-            }, 1400);
-        }
-        generateNameBalloons();
-
+        // Start App
         function startExperience() {
-            music.volume = 0.55;
-            music.play().catch(e => console.log(e));
+            music.volume = 0.3;
+            music.play().catch(() => {});
             nextPage('wishes');
         }
 
         function nextPage(nextId) {
-            if (isTransitioning) return;
-            isTransitioning = true;
-
             const current = document.querySelector('.section.active');
             const next = document.getElementById(nextId);
-
-            gsap.to(current, {opacity:0, duration:0.6, onComplete:()=>{
+            
+            gsap.to(current, {opacity:0, duration:0.4, onComplete:()=>{
                 current.classList.remove('active');
                 next.classList.add('active');
-                gsap.fromTo(next, {opacity:0, scale:0.88}, {opacity:1, scale:1, duration:0.8, ease:"back.out(1.4)", onComplete: () => isTransitioning = false});
-                
+                gsap.fromTo(next, {opacity:0, y:20}, {opacity:1, y:0, duration:0.5});
                 if(nextId === 'balloons') initBalloons();
+                if(nextId === 'final-page') initGame();
             }});
         }
 
+        // Wishes Logic
         function openWish(text) {
             document.getElementById('wish-text').innerText = text;
             const modal = document.getElementById('wish-modal');
             modal.style.display = 'flex';
-            gsap.fromTo(modal.children[0], {scale:0.4, opacity:0}, {scale:1, opacity:1, duration:0.6, ease:"back.out(1.7)"});
             wishesRead++;
             if(wishesRead >= 1) document.getElementById('btn-after-wishes').classList.remove('hidden');
         }
 
         function closeWish() {
-            gsap.to(document.getElementById('wish-modal').children[0], {scale:0.5, opacity:0, duration:0.4, onComplete:()=>{
-                document.getElementById('wish-modal').style.display = 'none';
-            }});
+            document.getElementById('wish-modal').style.display = 'none';
         }
 
+        // Balloons Logic
         function initBalloons() {
             const container = document.getElementById('balloon-container');
             container.innerHTML = '';
-            balloonsPopped = 0;
-            const colors = ['#ec407a','#d81b60','#c2185b','#ad1457','#f06292','#e91e63','#880e4f','#b71c1c','#e53935','#d32f2f'];
+            const colors = ['#ff4d6d', '#ff758f', '#c9184a', '#ff8fa3', '#ffb3c1', '#a4133c'];
             
-            for(let i=0; i<totalBalloons; i++) {
+            for(let i=0; i<8; i++) {
                 let b = document.createElement('div');
                 b.className = 'balloon';
-                b.style.setProperty('--balloon-color', colors[i]);
-                b.style.left = `${Math.random()*80 + 10}%`;
-                b.style.top = `${Math.random()*60 + 10}%`;
-                b.style.animationDelay = `${Math.random()*4}s`;
+                b.style.setProperty('--balloon-color', colors[i % colors.length]);
+                b.style.left = (10 + Math.random() * 70) + '%';
+                b.style.top = (10 + Math.random() * 60) + '%';
                 
-                b.onclick = function(e) {
-                    confetti({particleCount:70, spread:90, origin:{x:e.clientX/innerWidth, y:e.clientY/innerHeight}});
-                    b.style.display = 'none';
-                    
-                    let messages = [
-                        "pallavi, you're my everything ❤️",
-                        "my heart beats your name",
-                        "stuck on you forever",
-                        "you make my soul smile",
-                        "best friend + a little more",
-                        "can't imagine days without you",
-                        "you're my favorite vibe 😍",
-                        "love you in every language",
-                        "you + me = always",
-                        "my safe place, my home"
-                    ];
-                    let text = document.createElement('div');
-                    text.innerHTML = messages[Math.floor(Math.random()*messages.length)];
-                    text.className = "absolute premium-font text-4xl md:text-5xl font-bold pop-text-anim whitespace-nowrap text-center w-full text-rose-700 pointer-events-none";
-                    text.style.left = "0";
-                    text.style.top = b.style.top;
-                    container.appendChild(text);
-                    
+                b.onclick = (e) => {
+                    confetti({particleCount: 40, spread: 50, origin: {x: e.clientX/innerWidth, y: e.clientY/innerHeight}});
+                    b.remove();
                     balloonsPopped++;
-                    if(balloonsPopped === totalBalloons) {
-                        document.getElementById('btn-after-balloons').classList.remove('hidden');
-                    }
+                    if(balloonsPopped >= 6) document.getElementById('btn-after-balloons').classList.remove('hidden');
                 };
                 container.appendChild(b);
             }
         }
 
-        function goToFinal() {
-            if(isTransitioning) return;
-            isTransitioning = true;
-            music.pause();
-            const current = document.querySelector('.section.active');
-            const final = document.getElementById('final-page');
+        // Game Logic: Catch My Heart
+        function initGame() {
+            const canvas = document.getElementById('game-canvas');
+            const ctx = canvas.getContext('2d');
+            const scoreEl = document.getElementById('score');
+            
+            canvas.width = 300;
+            canvas.height = 200;
 
-            gsap.to(current, {opacity:0, duration:1, ease:"power3.in", onComplete:()=>{
-                current.classList.remove('active');
-                final.classList.add('active');
-                gsap.fromTo(final.children[0], {opacity:0, y:80}, {opacity:1, y:0, duration:1.5, ease:"power3.out"});
-                isTransitioning = false;
-            }});
+            let basket = { x: 130, y: 170, w: 40, h: 20 };
+            let hearts = [];
+            
+            // Input Handlers
+            const moveBasket = (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                basket.x = Math.max(0, Math.min(canvas.width - basket.w, x - basket.w/2));
+            };
+            canvas.addEventListener('mousemove', moveBasket);
+            canvas.addEventListener('touchmove', moveBasket);
+
+            function spawnHeart() {
+                hearts.push({ x: Math.random() * (canvas.width-20), y: -20, speed: 2 + Math.random() * 2 });
+            }
+
+            function update() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw Basket
+                ctx.fillStyle = '#be185d';
+                ctx.fillRect(basket.x, basket.y, basket.w, basket.h);
+                
+                // Draw Hearts
+                hearts.forEach((h, i) => {
+                    h.y += h.speed;
+                    ctx.font = '20px serif';
+                    ctx.fillText('💖', h.x, h.y);
+
+                    // Catch detection
+                    if(h.y > basket.y && h.y < basket.y + basket.h && h.x > basket.x - 10 && h.x < basket.x + basket.w) {
+                        hearts.splice(i, 1);
+                        score++;
+                        scoreEl.innerText = score;
+                    } else if (h.y > canvas.height) {
+                        hearts.splice(i, 1);
+                    }
+                });
+
+                if(Math.random() < 0.03) spawnHeart();
+                requestAnimationFrame(update);
+            }
+            update();
         }
 
-        // heart particles
+        // Background Particles (Optimized)
         const pContainer = document.getElementById('particles-container');
-        for(let i=0; i<18; i++) { 
+        for(let i=0; i<10; i++) { 
             let p = document.createElement('div');
             p.className = 'particle';
-            p.innerHTML = Math.random() > 0.4 ? '❤️' : '💗';
-            p.style.left = `${Math.random()*100}vw`;
-            p.style.animationDuration = `${Math.random()*6 + 8}s`;
-            p.style.animationDelay = `${Math.random()*10}s`;
-            p.style.fontSize = `${Math.random()*22 + 16}px`;
+            p.innerHTML = '❤️';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (6 + Math.random() * 4) + 's';
+            p.style.opacity = Math.random();
             pContainer.appendChild(p);
         }
     </script>
