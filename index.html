@@ -9,15 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;800&family=Bangers&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Bangers&display=swap');
         
         body, html {
             margin: 0; padding: 0;
             overflow: hidden;
-            background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+            background: #f8fafc; /* Premium Light Background */
             font-family: 'Poppins', sans-serif;
             touch-action: none;
-            color: #fff;
+            color: #1e293b;
         }
         
         .premium-font { font-family: 'Bangers', system-ui; letter-spacing: 2px; }
@@ -31,19 +31,38 @@
 
         .section.active { display: flex; opacity: 1; }
 
-        .glass-premium {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-        }
-        
+        /* Glowing Text Effect */
         .ultra-glow {
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(59, 130, 246, 0.5);
+            color: #1e3a8a;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+            filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
         }
 
-        /* Scratch Card Styles */
+        .glass-premium {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid #e2e8f0;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(59, 130, 246, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        }
+
         #scratch-container {
             position: relative;
             width: 300px;
@@ -54,7 +73,6 @@
         #scratch-canvas {
             position: absolute;
             top: 0; left: 0;
-            cursor: crosshair;
             z-index: 2;
             border-radius: 15px;
         }
@@ -65,12 +83,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #fff;
-            color: #1e1b4b;
+            background: #3b82f6;
+            color: #fff;
             font-size: 24px;
             font-weight: 800;
             border-radius: 15px;
             z-index: 1;
+            text-align: center;
+            padding: 10px;
         }
 
         .balloon {
@@ -78,7 +98,7 @@
             background: var(--balloon-color);
             border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
             position: absolute;
-            box-shadow: inset -10px -10px 15px rgba(0,0,0,0.2);
+            box-shadow: inset -10px -10px 15px rgba(0,0,0,0.1);
             animation: float 6s ease-in-out infinite alternate;
         }
         @keyframes float {
@@ -89,72 +109,73 @@
 </head>
 <body>
 
-    <div class="fixed top-4 left-0 w-full text-center z-[100] text-blue-300/70 text-sm font-bold tracking-widest">
-        Follow on Insta 📷 - <span class="text-white">@smss1708</span>
+    <div class="fixed top-4 left-0 w-full text-center z-[100] text-blue-600/70 text-sm font-bold tracking-widest">
+        Follow on Insta 📷 - <span class="text-blue-900">@smss1708</span>
     </div>
 
     <audio id="bgmusic" loop><source src="tere-liye.mp3" type="audio/mpeg"></audio>
 
     <section id="intro" class="section active">
+        <img src="photo1.jpg" alt="Lucas" class="intro-photo">
         <div class="text-center z-20">
             <h1 class="text-6xl md:text-8xl premium-font ultra-glow mb-4">HAPPY BIRTHDAY<br>LUCAS! ⚡</h1>
-            <p class="text-xl text-blue-200 mb-10">Something cool is waiting for you bro...</p>
-            <button onclick="startExperience()" class="bg-blue-600 hover:bg-blue-500 px-12 py-4 rounded-full text-xl font-black transition-all transform hover:scale-110 shadow-lg shadow-blue-500/40">
+            <p class="text-xl text-blue-600 font-semibold mb-10">Something special is waiting for you, bro...</p>
+            <button onclick="startExperience()" class="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-full text-xl font-black transition-all transform hover:scale-110 shadow-xl shadow-blue-200">
                 OPEN SURPRISE 🎁
             </button>
         </div>
     </section>
 
     <section id="wishes" class="section">
-        <h2 class="text-5xl premium-font mb-10 text-center">BRO'S WISHES ✉️</h2>
+        <h2 class="text-5xl premium-font mb-10 text-center ultra-glow">WISHES FOR YOU ✉️</h2>
         <div class="grid grid-cols-2 gap-4 w-full max-w-md">
-            <div class="glass-premium p-8 text-center cursor-pointer hover:bg-white/20 transition" onclick="openWish('Happy Birthday Lucas! May your year be filled with success and happiness bro! 🚀')">
-                <i class="fa-solid fa-crown text-3xl text-yellow-400 mb-2"></i>
-                <p class="font-bold">Wish 1</p>
+            <div class="glass-premium p-8 text-center cursor-pointer hover:scale-105 transition" onclick="openWish('Happy Birthday Lucas! May your year be filled with success and happiness bro! 🚀')">
+                <i class="fa-solid fa-crown text-3xl text-yellow-500 mb-2"></i>
+                <p class="font-bold text-blue-900">Wish 1</p>
             </div>
-            <div class="glass-premium p-8 text-center cursor-pointer hover:bg-white/20 transition" onclick="openWish('Keep grinding and keep shining. You are a legend in the making! ✨')">
+            <div class="glass-premium p-8 text-center cursor-pointer hover:scale-105 transition" onclick="openWish('Keep grinding and keep shining. You are a legend in the making! ✨')">
                 <i class="fa-solid fa-fire text-3xl text-orange-500 mb-2"></i>
-                <p class="font-bold">Wish 2</p>
+                <p class="font-bold text-blue-900">Wish 2</p>
             </div>
-            <div class="glass-premium p-8 text-center cursor-pointer hover:bg-white/20 transition" onclick="openWish('Stay blessed, stay humble. Party hard today because you deserve it! 🍻')">
+            <div class="glass-premium p-8 text-center cursor-pointer hover:scale-105 transition" onclick="openWish('Stay blessed and stay humble. Party hard today because you deserve it! 🍻')">
                 <i class="fa-solid fa-cake-candles text-3xl text-pink-500 mb-2"></i>
-                <p class="font-bold">Wish 3</p>
+                <p class="font-bold text-blue-900">Wish 3</p>
             </div>
-            <div class="glass-premium p-8 text-center cursor-pointer hover:bg-white/20 transition" onclick="openWish('Wishing you an amazing life ahead filled with adventures. Happy Birthday! 🎈')">
+            <div class="glass-premium p-8 text-center cursor-pointer hover:scale-105 transition" onclick="openWish('Wishing you an amazing life ahead filled with adventures. Happy Birthday! 🎈')">
                 <i class="fa-solid fa-heart text-3xl text-red-500 mb-2"></i>
-                <p class="font-bold">Wish 4</p>
+                <p class="font-bold text-blue-900">Wish 4</p>
             </div>
         </div>
-        <button id="btn-next" onclick="nextPage('balloons')" class="mt-10 bg-white text-blue-900 px-10 py-3 rounded-full font-bold hidden">NEXT STEP ➡️</button>
+        <button id="btn-next" onclick="nextPage('balloons')" class="mt-10 bg-blue-600 text-white px-10 py-3 rounded-full font-bold hidden shadow-lg shadow-blue-200">NEXT STEP ➡️</button>
 
-        <div id="wish-modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[110] px-6">
-            <div class="glass-premium p-10 text-center max-w-sm w-full">
-                <p id="wish-text" class="text-2xl font-bold italic mb-6"></p>
-                <button onclick="closeWish()" class="bg-blue-500 px-8 py-2 rounded-lg font-bold">Close</button>
+        <div id="wish-modal" class="fixed inset-0 bg-white/90 hidden items-center justify-center z-[110] px-6">
+            <div class="glass-premium p-10 text-center max-w-sm w-full border-2 border-blue-500">
+                <p id="wish-text" class="text-2xl font-bold text-blue-900 italic mb-6"></p>
+                <button onclick="closeWish()" class="bg-blue-600 text-white px-8 py-2 rounded-lg font-bold">Close</button>
             </div>
         </div>
     </section>
 
     <section id="balloons" class="section">
-        <h2 class="text-5xl premium-font mb-4 text-center">POP THE VIBES! 🎈</h2>
-        <p class="mb-10 text-blue-300">Tap to burst the balloons</p>
+        <h2 class="text-5xl premium-font mb-4 text-center ultra-glow">POP THE VIBES! 🎈</h2>
+        <p class="mb-10 text-blue-500 font-medium">Tap to burst the balloons</p>
         <div id="balloon-container" class="relative w-full h-[50vh] max-w-md"></div>
-        <button id="btn-scratch" onclick="nextPage('scratch-page')" class="mt-10 bg-yellow-500 text-black px-12 py-4 rounded-full font-black hidden animate-bounce">
+        <button id="btn-scratch" onclick="nextPage('scratch-page')" class="mt-10 bg-yellow-400 text-blue-900 px-12 py-4 rounded-full font-black hidden animate-bounce shadow-lg">
             FINAL SURPRISE 🪄
         </button>
     </section>
 
     <section id="scratch-page" class="section">
-        <h2 class="text-4xl premium-font mb-8 text-center">SCRATCH TO REVEAL! 🕵️‍♂️</h2>
-        <div id="scratch-container" class="shadow-2xl shadow-blue-500/20">
+        <h2 class="text-4xl premium-font mb-8 text-center ultra-glow">SCRATCH TO REVEAL! 🕵️‍♂️</h2>
+        <div id="scratch-container" class="shadow-2xl shadow-blue-200">
             <div class="scratch-content">
-                HAPPY BIRTHDAY BRO! 🎂
+                YOU ARE THE BEST BRO! 🎂
             </div>
             <canvas id="scratch-canvas" width="300" height="150"></canvas>
         </div>
-        <p class="mt-8 text-blue-200 text-sm italic">Scratch the card to see the message</p>
+        <p class="mt-8 text-blue-600 text-sm font-bold italic">Scratch the card for a message</p>
         <div id="made-by" class="mt-12 opacity-0 transition-opacity duration-1000">
-             <p class="text-xl font-bold">Made by Sivasingh ❤️</p>
+             <p class="text-2xl font-black text-blue-900 ultra-glow">Made by Sivasingh ❤️</p>
         </div>
     </section>
 
@@ -172,10 +193,10 @@
             const current = document.querySelector('.section.active');
             const next = document.getElementById(id);
             
-            gsap.to(current, {opacity: 0, duration: 0.5, onComplete: () => {
+            gsap.to(current, {opacity: 0, y: -20, duration: 0.5, onComplete: () => {
                 current.classList.remove('active');
                 next.classList.add('active');
-                gsap.to(next, {opacity: 1, duration: 0.5});
+                gsap.fromTo(next, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5});
                 if(id === 'balloons') initBalloons();
                 if(id === 'scratch-page') initScratchCard();
             }});
@@ -194,8 +215,9 @@
 
         function initBalloons() {
             const container = document.getElementById('balloon-container');
-            const colors = ['#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6'];
+            const colors = ['#3b82f6', '#60a5fa', '#2563eb', '#1d4ed8', '#93c5fd'];
             let popped = 0;
+            container.innerHTML = '';
             for(let i=0; i<6; i++) {
                 let b = document.createElement('div');
                 b.className = 'balloon';
@@ -204,7 +226,7 @@
                 b.style.setProperty('--balloon-color', colors[i%5]);
                 b.onclick = () => {
                     b.style.display = 'none';
-                    confetti({particleCount: 40, spread: 50, origin: {y: 0.7}});
+                    confetti({particleCount: 40, spread: 50, origin: {y: 0.7}, colors: ['#3b82f6', '#ffffff']});
                     popped++;
                     if(popped === 6) document.getElementById('btn-scratch').classList.remove('hidden');
                 };
@@ -215,16 +237,15 @@
         function initScratchCard() {
             const canvas = document.getElementById('scratch-canvas');
             const ctx = canvas.getContext('2d');
-            const container = document.getElementById('scratch-container');
             
-            // Fill with silver color
-            ctx.fillStyle = '#C0C0C0';
+            // Silver Scratch Layer
+            ctx.fillStyle = '#cbd5e1';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Add some pattern to the scratch area
-            ctx.fillStyle = '#A9A9A9';
-            for(let i=0; i<100; i++) {
-                ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 2, 2);
+            // Texture
+            ctx.fillStyle = '#94a3b8';
+            for(let i=0; i<200; i++) {
+                ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 1, 1);
             }
 
             let isDrawing = false;
@@ -232,14 +253,13 @@
             function scratch(e) {
                 if(!isDrawing) return;
                 const rect = canvas.getBoundingClientRect();
-                const x = (e.clientX || e.touches[0].clientX) - rect.left;
-                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+                const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
                 
                 ctx.globalCompositeOperation = 'destination-out';
                 ctx.beginPath();
-                ctx.arc(x, y, 20, 0, Math.PI * 2);
+                ctx.arc(x, y, 25, 0, Math.PI * 2);
                 ctx.fill();
-                
                 checkScratch();
             }
 
@@ -249,11 +269,11 @@
                 for(let i=0; i<imageData.data.length; i+=4) {
                     if(imageData.data[i+3] === 0) count++;
                 }
-                if(count > (imageData.data.length/4) * 0.6) {
+                if(count > (imageData.data.length/4) * 0.5) {
                     canvas.style.opacity = '0';
                     setTimeout(() => {
                         canvas.style.display = 'none';
-                        confetti({particleCount: 200, spread: 100});
+                        confetti({particleCount: 150, spread: 70, colors: ['#3b82f6', '#1e3a8a']});
                         document.getElementById('made-by').style.opacity = '1';
                     }, 500);
                 }
