@@ -1,209 +1,441 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Good Night Arpita 💖</title>
+    <title>🔥 SIVASINGH Report System 🔥</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@700&display=swap');
-        
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: #ffffff; /* White background */
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(45deg, #000000, #1a1a1a, #000000);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            color: #00FF00;
         }
 
-        /* Floating Balloons with Text */
-        .balloon {
-            position: absolute;
-            width: 110px;
-            height: 130px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: white;
-            padding: 8px;
-            box-sizing: border-box;
-            animation: floatUp 9s linear infinite;
-            z-index: 5;
-            box-shadow: inset -8px -8px 15px rgba(0,0,0,0.1);
-        }
-
-        .balloon::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            width: 2px;
-            height: 40px;
-            background: rgba(0,0,0,0.15);
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(110vh) rotate(0deg); }
-            100% { transform: translateY(-25vh) rotate(15deg); }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
-            text-align: center;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 25px;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.2rem;
-            color: #ff3366;
-            margin-bottom: 10px;
-        }
-
-        /* Scratch Card Styling */
-        .scratch-container {
-            margin: 25px auto;
-            width: 320px;
-            height: 190px;
-            position: relative;
-            user-select: none;
-            touch-action: none;
-        }
-
-        #scratch-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            cursor: crosshair;
-            z-index: 2;
-            border-radius: 15px;
-        }
-
-        .inner-content {
-            width: 100%;
-            height: 100%;
-            background: #eef7ff;
-            border: 2px dashed #0099ff;
-            border-radius: 15px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            text-align: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
-            box-sizing: border-box;
-            color: #0055ff; /* Blue text color */
-            font-weight: 600;
-            font-size: 1.15rem;
-            line-height: 1.5;
         }
 
-        .gn-bold {
-            font-size: 1.9rem;
-            color: #0033aa;
-            display: block;
-            margin: 8px 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        .screen {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #00FF00;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer {
-            color: #ff4d88;
-            font-size: 0.95rem;
-            margin-top: 10px;
-            font-weight: 500;
+        .screen::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00FF00, #FF0000, #00FF00, #FF0000);
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 2s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #FF0000;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #FF0000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #00FF00;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px #00FF00;
+        }
+
+        .input-field {
+            width: 100%;
+            height: 60px;
+            background: #1A1A1A;
+            border: 2px solid #00FF00;
+            border-radius: 10px;
+            color: #FFFFFF;
+            font-size: 18px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 20px #00FF00;
+            border-color: #00FF00;
+        }
+
+        .input-field::placeholder {
+            color: #888888;
+        }
+
+        .btn {
+            width: 100%;
+            height: 60px;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #000;
+        }
+
+        .btn-primary {
+            background: #006600;
+            color: #FFFFFF;
+            border: 3px solid #00FF00;
+        }
+
+        .btn-primary:hover {
+            background: #00FF00;
+            color: #000000;
+            box-shadow: 0 0 30px #00FF00;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #660000;
+            color: #FFFFFF;
+            border: 3px solid #FF0000;
+            height: 70px;
+            font-size: 22px;
+        }
+
+        .btn-danger:hover {
+            background: #FF0000;
+            color: #000000;
+            box-shadow: 0 0 30px #FF0000;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .report-screen {
+            padding: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .label {
+            color: #00FF00;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        select.input-field {
+            padding: 15px 20px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300FF00'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 10px;
+            background: #1A1A1A;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 1px solid #00FF00;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00FF00, #FF0000);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .status {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+            min-height: 25px;
+        }
+
+        .success { color: #00FF00; }
+        .error { color: #FF0000; }
+        .warning { color: #FFFF00; }
+
+        .logs {
+            background: #000;
+            border: 1px solid #00FF00;
+            border-radius: 10px;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+
+        @media (max-width: 480px) {
+            .screen {
+                margin: 10px;
+                padding: 20px;
+            }
+            .title {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Arpita &amp; Sivasingh 💖</h1>
-        
-        <div class="scratch-container">
-            <div class="inner-content">
-                <div>
-                    Abhi soye nahi 🤨?<br>
-                    Chalo achhe bachho ki tarah<br>
-                    nini karo jaldi se... 💤<br>
-                    <span class="gn-bold">Aur mujhe Good Night bhejo 💖</span>
-                    Sirf Gn nhi🤨 Kal jo missing tha vo bhi... 😁<br>
-                    heart emoji and 🤭🤭🤭🤭! ❤️
-                </div>
-            </div>
-            <canvas id="scratch-canvas" width="320" height="190"></canvas>
+        <!-- Key Screen -->
+        <div id="keyScreen" class="screen">
+            <div class="title">🔥 SIVASINGH REPORT SYSTEM 🔥</div>
+            <div class="subtitle">insta-@smss1708</div>
+            <input type="text" id="keyInput" class="input-field" placeholder="Enter Key: @smss1708" maxlength="20">
+            <button class="btn btn-primary" onclick="checkKey()">🔓 UNLOCK PANEL</button>
         </div>
 
-        <div class="footer">
-            Card ko scratch karke dekho ✨
+        <!-- Report Screen -->
+        <div id="reportScreen" class="screen hidden">
+            <div class="title">⚡ SIVASINGH Report Panel ⚡</div>
+            <div class="subtitle">insta-@smss1708</div>
+            
+            <div class="form-group">
+                <div class="label">🎯 Target Instagram ID</div>
+                <input type="text" id="targetId" class="input-field" placeholder="Enter Instagram username">
+            </div>
+
+            <div class="form-group">
+                <div class="label">🔢 Number of Reports</div>
+                <input type="number" id="reportCount" class="input-field" value="100" min="1" max="1000">
+            </div>
+
+            <div class="form-group">
+                <div class="label">⚖️ Report Reason</div>
+                <select id="reasonSpinner" class="input-field">
+                    <option>Hate Speech</option>
+                    <option>Nudity</option>
+                    <option>Violence</option>
+                    <option>Spam</option>
+                    <option>Harassment</option>
+                    <option>Impersonation</option>
+                    <option>Terrorism</option>
+                    <option>Illegal Drugs</option>
+                </select>
+            </div>
+
+            <div class="progress" id="progressBar" style="display: none;">
+                <div class="progress-bar" id="progressFill"></div>
+            </div>
+
+            <div id="status" class="status"></div>
+
+            <button id="reportBtn" class="btn btn-danger" onclick="startMassReport()">
+                🚀 START MASS REPORT
+            </button>
+            <button class="btn btn-primary" onclick="contactDeveloper()">
+                📞 Contact Developer
+            </button>
+
+            <div id="logs" class="logs" style="display: none;"></div>
         </div>
     </div>
 
     <script>
-        // 1. Colorful Balloons Logic
-        const colors = ['#ff4d6d', '#00b4d8', '#ffb703', '#70e000', '#9d4edd', '#fb6f92'];
-        
-        function createBalloon() {
-            const balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            balloon.innerText = "Arpita Sivasingh";
-            
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            balloon.style.backgroundColor = color;
-            balloon.style.left = Math.random() * 85 + 'vw';
-            balloon.style.animationDuration = (Math.random() * 4 + 8) + 's';
-            
-            document.body.appendChild(balloon);
-            setTimeout(() => balloon.remove(), 12000);
+        const VALID_KEY = "@smss1708";
+        let isReporting = false;
+        let reportInterval;
+
+        function checkKey() {
+            const keyInput = document.getElementById('keyInput').value.trim();
+            if (keyInput === VALID_KEY) {
+                document.getElementById('keyScreen').classList.add('hidden');
+                document.getElementById('reportScreen').classList.remove('hidden');
+            } else {
+                showStatus('❌ Invalid Key! Key: @smss1708', 'error');
+                document.getElementById('keyInput').value = '';
+                document.getElementById('keyInput').focus();
+            }
         }
 
-        // Initial burst and continuous flow
-        for(let i=0; i<5; i++) setTimeout(createBalloon, i*500);
-        setInterval(createBalloon, 1800);
+        function startMassReport() {
+            const target = document.getElementById('targetId').value.trim();
+            const countStr = document.getElementById('reportCount').value.trim();
+            const reason = document.getElementById('reasonSpinner').value;
 
-        // 2. Scratch Card Logic
-        const canvas = document.getElementById('scratch-canvas');
-        const ctx = canvas.getContext('2d');
-        let isDrawing = false;
+            if (!target || !countStr) {
+                showStatus('⚠️ Target ID & Count Required!', 'warning');
+                return;
+            }
 
-        // Fill with scratchable silver layer
-        ctx.fillStyle = '#d1d1d1'; 
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Pattern on silver layer
-        ctx.fillStyle = '#888';
-        ctx.font = 'bold 18px Poppins';
-        ctx.textAlign = 'center';
-        ctx.fillText('Yahan scratch karo 💖', canvas.width/2, canvas.height/2 + 5);
+            const count = parseInt(countStr);
+            if (count > 1000 || count < 1) {
+                showStatus('⚠️ Count must be between 1-1000!', 'warning');
+                return;
+            }
 
-        function scratch(e) {
-            if (!isDrawing) return;
-            const rect = canvas.getBoundingClientRect();
-            const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-            const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
-
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.beginPath();
-            ctx.arc(x, y, 25, 0, Math.PI * 2);
-            ctx.fill();
+            massReport(target, reason, count);
         }
 
-        canvas.addEventListener('mousedown', () => isDrawing = true);
-        canvas.addEventListener('touchstart', (e) => { isDrawing = true; e.preventDefault(); });
-        window.addEventListener('mouseup', () => isDrawing = false);
-        window.addEventListener('touchend', () => isDrawing = false);
-        canvas.addEventListener('mousemove', scratch);
-        canvas.addEventListener('touchmove', (e) => { scratch(e); e.preventDefault(); });
+        function massReport(target, reason, count) {
+            isReporting = true;
+            const reportBtn = document.getElementById('reportBtn');
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            const logs = document.getElementById('logs');
+            const status = document.getElementById('status');
 
+            reportBtn.disabled = true;
+            reportBtn.textContent = 'Reporting... 0/' + count;
+            progressBar.style.display = 'block';
+            logs.style.display = 'block';
+            logs.innerHTML = '';
+
+            let currentCount = 0;
+
+            reportInterval = setInterval(() => {
+                if (currentCount < count) {
+                    sendReport(target, reason, currentCount + 1);
+                    currentCount++;
+
+                    const progress = (currentCount / count) * 100;
+                    progressFill.style.width = progress + '%';
+                    reportBtn.textContent = 'Reporting... ' + currentCount + '/' + count;
+                    logs.scrollTop = logs.scrollHeight;
+                } else {
+                    clearInterval(reportInterval);
+                    reportBtn.disabled = false;
+                    reportBtn.textContent = '🚀 REPORT SENT!';
+                    progressFill.style.width = '100%';
+                    showStatus('✅ ' + count + ' Reports Sent to @' + target, 'success');
+                    
+                    setTimeout(() => {
+                        progressBar.style.display = 'none';
+                        logs.style.display = 'none';
+                        status.textContent = '';
+                    }, 3000);
+                }
+            }, 500); // 500ms delay same as original
+        }
+
+        function sendReport(target, reason, attempt) {
+            const reasonCode = getReasonCode(reason);
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = `📤 Report #${attempt}: ${target} - ${reason} (${reasonCode})`;
+            document.getElementById('logs').appendChild(logEntry);
+
+            // Simulate API call
+            fetch('https://httpbin.org/post', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_id: target,
+                    reason: reasonCode,
+                    description: `Automated report #${attempt}`,
+                    timestamp: new Date().toISOString()
+                })
+            }).catch(() => {}); // Silent fail for demo
+        }
+
+        function getReasonCode(reason) {
+            const codes = {
+                'Hate Speech': 'hate_speech',
+                'Nudity': 'nudity',
+                'Violence': 'violence',
+                'Spam': 'spam',
+                'Harassment': 'harassment',
+                'Impersonation': 'impersonation',
+                'Terrorism': 'terrorism',
+                'Illegal Drugs': 'drugs'
+            };
+            return codes[reason] || 'spam';
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + type;
+        }
+
+        function contactDeveloper() {
+            window.open('https://www.instagram.com/smss1708?igsh=aGcwcjhmdWpjd2w2', '_blank');
+        }
+
+        // Enter key support
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                if (!document.getElementById('reportScreen').classList.contains('hidden')) {
+                    startMassReport();
+                } else {
+                    checkKey();
+                }
+            }
+        });
+
+        // Auto-focus
+        document.getElementById('keyInput').focus();
     </script>
 </body>
 </html>
